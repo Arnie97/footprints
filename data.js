@@ -3,9 +3,10 @@
 var levels = [
     {description: '没去过', color: 'White'},
     {description: '路过', color: 'CornflowerBlue'},
-    {description: '玩过', color: 'SpringGreen'},
-    {description: '睡过', color: 'Gold'},
-    {description: '生活过', color: 'IndianRed'},
+    {description: '游玩过', color: 'SpringGreen'},
+    {description: '住宿过', color: 'Gold'},
+    {description: '久居过', color: 'IndianRed'},
+    {description: '总分', color: 'White', total: true},
 ];
 
 var regions = {

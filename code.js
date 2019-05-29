@@ -4,9 +4,10 @@ var score = 0;
 
 function levelCycle(event) {
     var region = event.currentTarget.region;
-    var new_level = (region.level + 1) % 5;
-    score = score - region.level + new_level;
-    document.getElementById('score').textContent = score;
+    var new_level = (region.level + 1) % (levels.length - 1);
+    document.getElementById('level-' + region.level).textContent--;
+    document.getElementById('level-' + new_level).textContent++;
+    document.getElementById('total').textContent -= region.level - new_level;
     region.level = new_level;
     region.path.attr({fill: levels[new_level].color});
 }
@@ -42,11 +43,16 @@ window.onload = function() {
         legend_item.style.backgroundColor = level.color;
 
         var label = document.createElement('td');
-        label.textContent = level_no;
+        label.textContent = level.total? 'Σ': level_no;
         legend_item.appendChild(label);
 
         label = document.createElement('td');
         label.textContent = level.description;
+        legend_item.appendChild(label);
+
+        label = document.createElement('td');
+        label.textContent = level_no? 0: Object.keys(regions).length;
+        label.id = level.total? 'total': 'level-' + level_no;
         legend_item.appendChild(label);
 
         legend.appendChild(legend_item);
