@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 html {
-    background-color: lightskyblue;
+    background-color: #B3E5FC;
 }
 
 h1 {
@@ -11,9 +11,10 @@ h1 {
 }
 
 #legend, #export {
-    border: solid 2px;
-    border-radius: 5px;
+    border: 2px solid gray;
+    border-radius: 10px;
     border-spacing: 0;
+    overflow: hidden;
     text-align: center;
 }
 

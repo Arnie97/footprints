@@ -1,12 +1,12 @@
 'use strict';
 
 var levels = [
-    {description: '没去过', color: 'White'},
-    {description: '路过', color: 'CornflowerBlue'},
-    {description: '游玩过', color: 'SpringGreen'},
-    {description: '住宿过', color: 'Gold'},
-    {description: '久居过', color: 'IndianRed'},
-    {description: '总分', color: 'White', total: true},
+    {description: '没去过', color: '#FFFFFF'},
+    {description: '路过',   color: '#DCEDC8'},
+    {description: '游玩过', color: '#FFF176'},
+    {description: '住宿过', color: '#FFB74D'},
+    {description: '生活过', color: '#F06292'},
+    {description: '总分',   color: '#FFFFFF', total: true},
 ];
 
 var regions = {
