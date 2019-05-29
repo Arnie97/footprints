@@ -12,7 +12,7 @@ function 弹出表格(事件) {
 }
 
 function 处理选择(事件) {
-    var 选择 = +事件.currentTarget.getAttribute('data-级别');
+    var 选择 = +事件.currentTarget.getAttribute('data-level');
     表格.省.等级 = 选择;
     表格.省.图形.attr({fill : 颜色[选择]});
     document.getElementById('等级').textContent = 计算();
@@ -195,7 +195,7 @@ window.onload = function () {
 
     Array.from(document.getElementsByClassName('选择')).forEach(
         function (选择) {
-            选择.style.backgroundColor = 颜色[选择.getAttribute('data-级别')];
+            选择.style.backgroundColor = 颜色[选择.getAttribute('data-level')];
             选择.onclick = 处理选择;
         }
     );
@@ -219,4 +219,3 @@ window.onload = function () {
 
     document.getElementById('脸书').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURI(window.location.href);
 };
-
