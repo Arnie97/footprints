@@ -64,7 +64,7 @@ window.onload = function () {
         表格.style.display = 'none';
     };
 
-    document.getElementById('产生图片').onclick = function () {
+    document.getElementById('export').onclick = function () {
         html2canvas(document.getElementById('地图')).then(
             function (画布) {
                 var link = document.createElement('a');
@@ -76,6 +76,4 @@ window.onload = function () {
             }
         )
     };
-
-    document.getElementById('脸书').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURI(window.location.href);
 };
