@@ -1,23 +1,6 @@
 'use strict';
 
-var 表格;
-
-function 弹出表格(事件) {
-    表格.省 = 事件.currentTarget.省;
-    表格.getElementsByTagName('th')[0].textContent = 表格.省.名;
-    表格.style.display = 'table';
-    表格.style.left = 事件.clientX + 'px';
-    表格.style.top = 事件.clientY + 'px';
-    事件.stopPropagation();
-}
-
-function 处理选择(事件) {
-    var 选择 = +事件.currentTarget.getAttribute('data-level');
-    表格.省.等级 = 选择;
-    表格.省.图形.attr({fill : 颜色[选择]});
-    document.getElementById('等级').textContent = 计算();
-    表格.style.display = 'none';
-}
+var colors = ['White', 'CornflowerBlue', 'SpringGreen', 'Gold', 'IndianRed'];
 
 var 中国 = {
     黑龙江 : {
@@ -156,66 +139,4 @@ var 中国 = {
         路径 : 'M589.98,618.941c-0.572,0.632-3.354,2.139,0.277,1.864 c1.327-1.714,0.294-2.521,0.031-2.603C590.044,618.132,590.158,618.744,589.98,618.941L589.98,618.941z M592.229,617.068    c-2.423,0.669,1.396,1.056,1.709,0.889C594.29,617.768,594.521,616.433,592.229,617.068z M600.688,619.03    c0.352-0.207-2.771-3.942-4.518-5.379c-0.224,0.419-0.555,0.521-1.025,0.61c1.333,2.194,1.521,0.662,2.354,1.708    C599.246,618.175,597.229,621.111,600.688,619.03L600.688,619.03z M582.424,626.738c-0.421,2.439,2.563-3.183,1.206-3.325    c-0.271-0.03-1.628,0.479-1.628,0.479c-1.261,1.582-2.752-0.441-3.375,1.851C580.122,627.573,581.102,624.869,582.424,626.738    L582.424,626.738z',
         偏移 : {x : 0, y : 10},
     },
-};
-
-var 颜色 = ['White', 'CornflowerBlue', 'SpringGreen', 'Gold', 'IndianRed'];
-
-function 计算() {
-    var 总计 = 0;
-    for (var 省名 in 中国) {
-        总计 += 中国[省名].等级;
-    }
-    return 总计;
-}
-
-window.onload = function () {
-    表格 = document.getElementById('表格');
-    var 地图 = new Raphael('地图');
-    for (var 省名 in 中国) {
-        var 省 = 中国[省名];
-        var 图形 = 地图.path(省.路径);
-        图形.attr({fill : 颜色[0]});
-        省.名 = 省名;
-        省.图形 = 图形;
-        省.等级 = 0;
-
-        var x = 图形.getBBox().x + 图形.getBBox().width / 2 + 省.偏移.x;
-        var y = 图形.getBBox().y + 图形.getBBox().height / 2 + 省.偏移.y;
-        var 文字 = 地图.text(x, y, 省名);
-
-
-        [图形, 文字].forEach(
-            function (元素) {
-                元素.attr({cursor : 'pointer'});
-                元素[0].onclick = 弹出表格;
-                元素[0].省 = 省;
-            }
-        );
-    }
-
-    Array.from(document.getElementsByClassName('选择')).forEach(
-        function (选择) {
-            选择.style.backgroundColor = 颜色[选择.getAttribute('data-level')];
-            选择.onclick = 处理选择;
-        }
-    );
-
-    document.getElementsByTagName('html')[0].onclick = function () {
-        表格.style.display = 'none';
-    };
-
-    document.getElementById('产生图片').onclick = function () {
-        html2canvas(document.getElementById('地图')).then(
-            function (画布) {
-                var link = document.createElement('a');
-                link.download = '制县等级.png';
-                link.href = 画布.toDataURL();
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-        )
-    };
-
-    document.getElementById('脸书').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURI(window.location.href);
 };
