@@ -6,16 +6,11 @@ html {
 
 h1 {
     position: absolute;
-    top: 20px;
-    left: 350px;
+    top: 30px;
+    left: 400px;
 }
 
-#表格 {
-    position: fixed;
-    display: none;
-}
-
-#表格, #legend, #export {
+#legend, #export {
     border: solid 2px;
     border-radius: 5px;
     border-spacing: 0;
@@ -31,15 +26,6 @@ h1 {
     left: 50px;
 }
 
-#表格 th {
-    background-color: lightgrey;
-}
-
-#表格 td {
-    background-color: lightgrey;
-    cursor: pointer;
-}
-
 #export {
     left: 150px;
     border-radius: 5px;
@@ -49,17 +35,12 @@ h1 {
     color: black;
 }
 
-#地图 {
+#map {
     position: relative;
     width: 864px;
     height: 720px;
-    background-color: lightskyblue;
 }
 
 th, td, #export {
     padding: 0.2em;
-}
-
-footer {
-    font-size: x-small;
 }
