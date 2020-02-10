@@ -59,6 +59,8 @@ window.onload = function() {
     });
 
     document.getElementById('export').onclick = function() {
+        var button = this;
+        button.style.display = 'none';
         html2canvas(document.getElementById('map')).then(function(canvas) {
             var link = document.createElement('a');
             link.download = '制县等级.png';
@@ -66,6 +68,7 @@ window.onload = function() {
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+            button.style.display = 'block';
         });
     };
 };
